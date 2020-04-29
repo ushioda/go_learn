@@ -6,8 +6,11 @@ import (
 
 func main() {
 	bd := 1986
-	for bd < 2021 {
+	for {
 		fmt.Println(bd)
+		if bd >= 2020 {
+			break
+		}
 		bd ++
 		}
 	}
