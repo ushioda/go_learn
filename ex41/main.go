@@ -3,11 +3,8 @@ package main
 import "fmt"
 
 func main() {
-	var a [3]string
-	a[0] = "Alice"
-	a[1] = "Bob"
-	a[2] = "Chris"
-	for i, v := range a{
+	a := []int{23, 34, 23, 12, 55, 565, 324, 876, 45, 23}
+	for i, v := range a {
 		fmt.Println(i, v)
 	}
 	fmt.Printf("%T \n", a)
