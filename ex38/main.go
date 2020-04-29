@@ -3,15 +3,15 @@ package main
 import "fmt"
 
 func main() {
-	mn := "Yu"
-	switch {
-	case mn == "Yu":
-		fmt.Println("My name is Yu")
-	case mn == "Jay":
-		fmt.Println("Jay")
-	case mn == "Hokiat":
-		fmt.Println("My name is Hokiat")
+	favSport := "Tennis"
+	switch favSport {
+	case "Soccer":
+		fmt.Println("He likes soccer")
+	case "Baseball":
+		fmt.Println("He likes baseball")
+	case "Tennis":
+		fmt.Println("He likes tennis")
 	default:
-		fmt.Println("no name found")
+		fmt.Println("He doesn't like sports")
 	}
 }
