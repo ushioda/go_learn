@@ -22,4 +22,8 @@ func main() {
 		println("Sam does not exist")
 	}
 
+	for key, value := range m{
+		println(key, value)
+	}
+
 }
