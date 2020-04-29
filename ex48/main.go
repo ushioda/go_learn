@@ -10,6 +10,8 @@ func main() {
 
 	nl["man_spider"] = []string{"pizza", "beer"}
 
+	delete(nl, "man_spider")
+
 	for key, p := range nl {
 		for i, item := range p {
 			fmt.Printf("%v likes %v, %d \n", key, item, i)
