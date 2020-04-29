@@ -3,8 +3,10 @@ package main
 import "fmt"
 
 func main() {
-	x := make([]int, 10, 100)
-	fmt.Println(x)
-	fmt.Println(len(x))
-	fmt.Println(cap(x))
+	fr := []string{"James", "Bond", "Soccer"}
+	sr := []string{"Alice", "Smith", "Judo"}
+	fmt.Println(fr)
+	fmt.Println(sr)
+	xp := [][]string{fr, sr}
+	fmt.Println(xp)
 }
