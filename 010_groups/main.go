@@ -7,23 +7,21 @@ func main() {
 		"James": 32,
 		"Bob":   40,
 	}
+
 	fmt.Println(m)
-	fmt.Println(m["James"])
-	fmt.Println(m["Bob"])
-	fmt.Println(m["Sam"])
 
-	v, ok := m["Sam"]
-	fmt.Println(v)
-	fmt.Println(ok)
-
-	if _, ok := m["Sam"]; ok {
-		println("Sam exists")
+	if v, ok := m["Sam"]; ok {
+		fmt.Printf("%v exists and delete \n", v)
+		delete(m, "Sam")
 	} else {
-		println("Sam does not exist")
+		fmt.Printf("%v did not exist \n", v)
+	}
+	if v, ok := m["James"]; ok {
+		fmt.Printf("%v exists and delete \n", v)
+		delete(m, "James")
+	} else {
+		fmt.Printf("%v did not exist \n", v)
 	}
 
-	for key, value := range m{
-		println(key, value)
-	}
-
+	fmt.Println(m)
 }
