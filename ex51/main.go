@@ -17,10 +17,6 @@ func main() {
 		fic:   fic1,
 	}
 
-	for i, v := range p1.fic {
-		fmt.Println(i, v)
-	}
-
 	fic2 := []string{"Coffee", "Strawberry"}
 
 	p2 := person{
@@ -28,7 +24,17 @@ func main() {
 		last:  "Kim",
 		fic:   fic2,
 	}
-	for i, v := range p2.fic {
-		fmt.Println(i, v)
+
+	pm := map[string]person{
+		p1.last: p1,
+		p2.last: p2,
+	}
+
+	for key, value := range pm {
+		fmt.Println(value.first)
+		fmt.Println(key)
+		for i, v := range value.fic {
+			fmt.Println(i, v)
+		}
 	}
 }
