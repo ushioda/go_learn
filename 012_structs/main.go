@@ -8,17 +8,31 @@ type person struct {
 	age   int
 }
 
+type secretAgent struct {
+	person
+	ltk bool
+}
+
 func main() {
-	p1 := person{
-		first: "James",
-		last:  "Bond",
-		age:   32,
+	sa1 := secretAgent{
+		person: person{
+			first: "James",
+			last:  "Bond",
+			age:   32,
+		},
+		ltk: true,
 	}
-	p2 := person{
-		first: "Ethan",
-		last:  "Hawk",
-		age:   55,
+	sa2 := secretAgent{
+		person: person{
+			first: "Ethan",
+			last:  "Hawk",
+			age:   55,
+		},
+		ltk: false,
 	}
-	fmt.Println(p1)
-	fmt.Println(p2)
+	fmt.Println(sa1.first)
+	fmt.Println(sa1.last)
+	fmt.Println(sa1.age)
+	fmt.Println(sa1.ltk)
+	fmt.Println(sa2)
 }
