@@ -3,14 +3,9 @@ package main
 import "fmt"
 
 func main() {
-	s := sum(2, 3, 4, 5, 6, 7, 8, 9)
+	xi := []int{2, 3, 4, 5, 6, 7, 8, 9}
+	s := sum(xi...)
 	fmt.Println("The total is", s)
-	bar("James")
-	s1 := woo("Money")
-	fmt.Println(s1)
-	x, y := mouse("Ian", "Fleming")
-	fmt.Println(x)
-	fmt.Println(y)
 }
 
 func sum(x ...int) int {
@@ -22,18 +17,4 @@ func sum(x ...int) int {
 		sum += v
 	}
 	return sum
-}
-
-func bar(s string) {
-	fmt.Println("Hello,", s)
-}
-
-func woo(st string) string {
-	return fmt.Sprint("Hello from woo, ", st)
-}
-
-func mouse(fn, ln string) (string, bool) {
-	a := fmt.Sprint(fn, " ", ln, ` says "Hello"`)
-	b := false
-	return a, b
 }
