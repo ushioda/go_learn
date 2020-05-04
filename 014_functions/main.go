@@ -6,6 +6,17 @@ func main() {
 	xi := []int{2, 3, 4, 5, 6, 7, 8, 9}
 	s := sum(xi...)
 	fmt.Println("The total is", s)
+
+	defer foo()
+	bar()
+}
+
+func foo() {
+	fmt.Println("foo")
+}
+
+func bar() {
+	fmt.Println("bar")
 }
 
 func sum(x ...int) int {
