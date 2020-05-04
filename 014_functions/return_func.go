@@ -9,8 +9,5 @@ func ref() func() int {
 }
 
 func main() {
-	x := ref()
-	fmt.Printf("This is type %T \n", x)
-	i := ref()
-	fmt.Println(i())
+	fmt.Println(ref()())
 }
