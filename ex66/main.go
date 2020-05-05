@@ -2,9 +2,14 @@ package main
 
 import "fmt"
 
-func main() {
-	f := func() {
-		fmt.Println("Hello World")
+func g() func() int {
+	f := func() int {
+		return 42
 	}
-	f()
+	return f
+}
+
+func main() {
+	f := g()
+	fmt.Println(f())
 }
