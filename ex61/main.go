@@ -2,16 +2,24 @@ package main
 
 import "fmt"
 
-func foo() (int, string) {
-	return 0, "James"
+func foo(x ...int) int {
+	total := 0
+	for _, v := range x {
+		total += v
+	}
+	return total
 }
 
-func bar() int {
-	x := 0
-	return x
+func bar(x []int) int {
+	total := 0
+	for _, v := range x {
+		total += v
+	}
+	return total
 }
 
 func main() {
-	fmt.Println(bar())
-	fmt.Println(foo())
+	x := []int{10, 9, 8, 7}
+	fmt.Println(foo(x...))
+	fmt.Println(bar(x))
 }
