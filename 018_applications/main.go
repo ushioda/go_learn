@@ -24,11 +24,28 @@ func main() {
 	}
 
 	people := []person{p1, p2}
-	bs, err := json2.Marshal(people)
+	fmt.Println(people)
 
+	bs, err := json2.Marshal(people)
 	if err != nil {
 		fmt.Println(err)
 	} else {
-		fmt.Println(string(bs))
+		fmt.Println("Marshalled data is", string(bs))
+	}
+
+	s := string(bs)
+	bs2 := []byte(s)
+	fmt.Printf("%T\n", s)
+	fmt.Printf("%T\n", bs2)
+
+	var people2 []person
+
+	err = json2.Unmarshal(bs2, &people2)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println("Unmarshalled data is", people2)
+	for i, v := range people2 {
+		fmt.Println("Person", i, ":", v)
 	}
 }
