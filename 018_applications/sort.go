@@ -21,12 +21,12 @@ func (a ByAge) Less(i, j int) bool { return a[i].Age < a[j].Age }
 
 type ByFirst []Person
 
-func min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
-}
+//func min(a, b int) int {
+//	if a < b {
+//		return a
+//	}
+//	return b
+//}
 
 func (a ByFirst) Len() int           { return len(a) }
 func (a ByFirst) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
