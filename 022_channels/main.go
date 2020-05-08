@@ -4,18 +4,22 @@ import "fmt"
 
 func main() {
 	c := make(chan int)
-	cr := make(<-chan int)
-	cs := make(chan<- int)
 
-	go func() {
-		c <- 42
-	}()
-	//fmt.Println(<-c)
-	fmt.Println("--------------")
-	fmt.Printf("%T\n", c)
-	fmt.Printf("%T\n", cr)
-	fmt.Printf("%T\n", cs)
+	go foo(c)
 
-	cr = c // from general to specific works
-	fmt.Println(<-cr)
+	bar(c)
+
+	fmt.Println("end of main. exiting.")
+}
+
+// send
+
+func foo(c chan<- int) {
+	c <- 42
+}
+
+// receive
+
+func bar(c <-chan int) {
+	fmt.Println(<-c)
 }
