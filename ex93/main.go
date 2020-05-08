@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"runtime"
 	"sync"
+	"sync/atomic"
 	"time"
 )
 
@@ -12,20 +13,14 @@ func main() {
 	const gs = 100
 	var wg sync.WaitGroup
 	wg.Add(gs)
+	var counter int64
 
-	var mu sync.Mutex
-
-	counter := 0
 	for i := 0; i < gs; i++ {
 		go func() {
-			mu.Lock()
-			v := counter
+			atomic.AddInt64(&counter, 1)
 			runtime.Gosched()
-			v++
 			time.Sleep(time.Millisecond)
-			counter = v
-			fmt.Println("Counter value:", counter)
-			mu.Unlock()
+			fmt.Println("Counter value:", atomic.LoadInt64(&counter))
 			wg.Done()
 		}()
 	}
