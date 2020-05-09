@@ -2,12 +2,19 @@ package main
 
 import "fmt"
 
+const n = 20
+
 func main() {
+
 	c := make(chan int)
 
 	go foo(c)
 
-	bar(c)
+	// receive
+
+	for v := range c {
+		fmt.Println(v)
+	}
 
 	fmt.Println("end of main. exiting.")
 }
@@ -15,11 +22,8 @@ func main() {
 // send
 
 func foo(c chan<- int) {
-	c <- 42
-}
-
-// receive
-
-func bar(c <-chan int) {
-	fmt.Println(<-c)
+	for i := 0; i < n; i++ {
+		c <- i
+	}
+	close(c)
 }
