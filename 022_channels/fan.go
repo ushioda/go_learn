@@ -2,52 +2,40 @@ package main
 
 import (
 	"fmt"
-	"sync"
+	"math/rand"
+	"time"
 )
 
 func main() {
-	even := make(chan int)
-	odd := make(chan int)
-	fanin := make(chan int)
-
-	go sen(even, odd)
-	go rec(even, odd, fanin)
-
-	for v := range fanin {
-		fmt.Println(v)
+	c := fanIn(boring("Joe"), boring("Ann"))
+	for i := 0; i < 10; i++ {
+		fmt.Println(<-c)
 	}
-	fmt.Println("exit main")
+	fmt.Println("You are both boring. I am leaving.")
 }
 
-func sen(e, o chan<- int) {
-	for i := 0; i < 20; i++ {
-		switch {
-		case i%2 == 0:
-			e <- i
-		case i%2 != 0:
-			o <- i
+func boring(msg string) <-chan string {
+	c := make(chan string)
+	go func() {
+		for i := 0; ; i++ {
+			c <- fmt.Sprintf("%s %d", msg, i)
+			time.Sleep(time.Duration(rand.Intn(1e3)) * time.Millisecond)
 		}
-	}
-	close(e)
-	close(o)
+	}()
+	return c
 }
 
-func rec(e, o <-chan int, fan chan<- int) {
-	var wg sync.WaitGroup
-	wg.Add(2)
-
+func fanIn(input1, input2 <-chan string) <-chan string {
+	c := make(chan string)
 	go func() {
-		for v := range e {
-			fan <- v
+		for {
+			c <- <-input1
 		}
-		wg.Done()
 	}()
 	go func() {
-		for v := range o {
-			fan <- v
+		for {
+			c <- <-input2
 		}
-		wg.Done()
 	}()
-	wg.Wait()
-	close(fan)
+	return c
 }
