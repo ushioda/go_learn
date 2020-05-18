@@ -1,8 +1,10 @@
-package main
+package main_test
 
-import "testing"
+import (
+	"testing"
+)
 
-func TestAverage(t *testing.T) {
+func TestSum(t *testing.T) {
 	p := 4.5
 	q := 3.2
 	v := Sum(p, q)
