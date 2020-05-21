@@ -16,8 +16,8 @@ func TestYears(t *testing.T) {
 func ExampleYears() {
 	dy := 4
 	fmt.Println(Years(dy))
-	//	Output:
-	//	28
+	//Output:
+	//28
 }
 
 func BenchmarkYears(b *testing.B) {
