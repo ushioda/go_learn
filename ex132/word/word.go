@@ -1,3 +1,4 @@
+//Package word provide ways to count words.
 package word
 
 import "strings"
